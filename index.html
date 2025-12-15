@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mathematics Club</title>
+    <title>P.R.I.M.E - Mathematics Club</title>
     <style>
         * {
             margin: 0;
@@ -80,7 +80,6 @@
             transform: translateX(-50%);
             z-index: 10;
             cursor: pointer;
-           
         }
 
         .scroll-arrow {
@@ -121,11 +120,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 1.5rem 3rem;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
+            border-radius: 75px;
             z-index: 1000;
             transition: all 0.3s;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
@@ -134,25 +133,6 @@
         nav:hover {
             background: rgba(0, 0, 0, 0.95);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-        }
-
-        .logo {
-            width: 50px;
-            height: 50px;
-            background: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.5rem;
-            color: #000;
-            transition: transform 0.3s;
-            margin-right: 2rem;
-        }
-
-        .logo:hover {
-            transform: scale(1.1) rotate(5deg);
         }
 
         .nav-links {
@@ -205,48 +185,55 @@
 
         .hero-left {
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .hero-title {
-            font-size: 7rem;
-            font-weight: bold;
-            line-height: 1;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s forwards 0.3s;
+        .hero-left .logo {
+            width: auto;
+            height: auto;
+            max-width: 500px;
+            max-height: 500px;
+            background: transparent;
+            border-radius: 0;
+            margin: 0;
         }
 
-        .hero-subtitle {
-            font-size: 4rem;
-            font-weight: 300;
-            color: #888;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeInUp 1s forwards 0.6s;
-        }
-
-        .geometric-logo {
-            width: 500px;
-            height: 500px;
-            position: relative;
-            opacity: 0;
-            animation: fadeIn 1.5s forwards 0.9s;
-        }
-
-        .geometric-logo svg {
+        .hero-left .logo img {
             width: 100%;
             height: 100%;
+            object-fit: contain;
         }
 
-        .club-name {
-            font-size: 3.5rem;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 2rem;
-            letter-spacing: 8px;
-            text-transform: lowercase;
-            opacity: 0;
-            animation: fadeInUp 1s forwards 1.2s;
+        .instagram-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .instagram-container blockquote {
+            max-width: 400px !important;
+            min-width: 280px !important;
+        }
+
+        .instagram-container .instagram-media {
+            border-radius: 12px !important;
+            overflow: hidden;
+        }
+
+        .event-description {
+            display: block;
+        }
+
+        .event-embed {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-right {
@@ -285,36 +272,6 @@
             z-index: 0;
         }
 
-        .hero-left {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-left .logo {
-    width: auto;
-    height: auto;
-    max-width: 500px;
-    max-height: 500px;
-    background: transparent;
-    border-radius: 0;
-    margin: 0;
-}
-
-.hero-left .logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-@media (max-width: 1024px) {
-    .hero-left .logo {
-        max-width: 300px;
-        max-height: 300px;
-    }
-}
-
         @keyframes fadeIn {
             to {
                 opacity: 1;
@@ -343,18 +300,6 @@
             }
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-        }
-
         @keyframes scrollDot {
             0% {
                 opacity: 1;
@@ -364,19 +309,6 @@
                 opacity: 0;
                 top: 30px;
             }
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .rotating {
-            animation: rotate 20s linear infinite;
         }
 
         @media (max-width: 1024px) {
@@ -393,22 +325,13 @@
                 padding: 6rem 2rem 2rem;
             }
 
-            .hero-title {
-                font-size: 4rem;
-            }
-
-            .hero-subtitle {
-                font-size: 2.5rem;
-            }
-
-            .geometric-logo {
-                width: 300px;
-                height: 300px;
-                margin: 0 auto;
+            .hero-left .logo {
+                max-width: 300px;
+                max-height: 300px;
             }
 
             nav {
-                padding: 1rem 1.5rem;
+                padding: 1.5rem 2.25rem;
                 top: 1rem;
                 width: 95%;
             }
@@ -420,17 +343,13 @@
             .nav-links a {
                 font-size: 0.75rem;
             }
-
-            .logo {
-                margin-right: 1rem;
-            }
         }
     </style>
 </head>
 <body>
     <!-- Landing Section -->
     <section class="landing">
-        <!-- Replace 'your-image.jpg' with your local image path -->
+        <!-- Replace 'your-image.png' with your local image path -->
         <img src="your-image.png" alt="Mathematics" class="landing-image" id="landingImage">
         
         <!-- Fallback SVG (will show if image fails to load) -->
@@ -480,7 +399,7 @@
         
         <div class="landing-content">
             <h1 class="landing-title">P.R.I.M.E</h1>
-            <p class="landing-subtitle">Promoting Reasearch and Interest in Mathematics and Engineering</p>
+            <p class="landing-subtitle">Promoting Research and Interest in Mathematics and Engineering</p>
         </div>
         
         <div class="scroll-indicator" onclick="scrollToContent()">
@@ -511,31 +430,67 @@
     <section class="content-section" id="content">
         <main class="hero">
             <div class="hero-left">
-
-
-                 <div class="logo">
-        <img src="your-logo.png" alt="Logo">
-    </div>
-                
-               
+                <div class="logo">
+                    <img src="your-logo.png" alt="PRIME Logo">
+                </div>
             </div>
 
             <div class="hero-right" id="about">
-    <h2 class="section-title">About Us</h2>
-    <div class="content-text">
-        <p>
-            <span class="highlight">PRIME (Promoting Research in Mathematics and Engineering)</span> is a student-driven community for anyone curious about mathematics and its real-world impact. We provide a space to explore ideas, sharpen problem-solving skills, and connect mathematics with engineering, research, and industry.
-        </p>
-        <br>
-        <p>
-            Through <span class="highlight">interactive workshops, coding sessions, talks, competitions, and collaborative study groups</span>, PRIME makes learning mathematics practical, engaging, and hands-on. Our goal is to <span class="highlight">foster curiosity, collaboration, and innovation</span>, empowering students to grow academically and apply mathematical thinking to real-world challenges.
-        </p>
-    </div>
-</div>
+                <h2 class="section-title">About Us</h2>
+                <div class="content-text">
+                    <p>
+                        <span class="highlight">PRIME (Promoting Research in Mathematics and Engineering)</span> is a student-driven community for anyone curious about mathematics and its real-world impact. We provide a space to explore ideas, sharpen problem-solving skills, and connect mathematics with engineering, research, and industry.
+                    </p>
+                    <br>
+                    <p>
+                        Through <span class="highlight">interactive workshops, coding sessions, talks, competitions, and collaborative study groups</span>, PRIME makes learning mathematics practical, engaging, and hands-on. Our goal is to <span class="highlight">foster curiosity, collaboration, and innovation</span>, empowering students to grow academically and apply mathematical thinking to real-world challenges.
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Events Section -->
+        <div style="text-align: center; padding: 4rem 0 2rem;">
+            <h1 style="font-size: 5rem; font-weight: bold; opacity: 0; animation: fadeInUp 1s forwards;">Events</h1>
+        </div>
+        
+        <main class="hero" id="events">
+            <div class="hero-left event-description">
+                <h2 class="section-title">P.T.S.D</h2>
+                <div class="content-text">
+                    <p>
+                        <span class="highlight">P.T.S.D (PRIME's Thrilling Session of Discussions)</span> is our flagship weekly event where mathematical curiosity meets collaborative problem-solving. Every session brings together students passionate about mathematics to tackle challenging problems, explore new concepts, and share innovative approaches.
+                    </p>
+                    <br>
+                    <p>
+                        Through <span class="highlight">interactive discussions, brain-teasing puzzles, and peer-led explorations</span>, P.T.S.D creates an engaging environment where learning happens naturally. Whether you're a beginner or an advanced problem solver, these sessions are designed to <span class="highlight">challenge your thinking, expand your mathematical toolkit</span>, and connect you with like-minded peers who share your passion for mathematics.
+                    </p>
+                    <br>
+                    <p>
+                        Join us every week to <span class="highlight">sharpen your problem-solving skills, discover new mathematical techniques</span>, and be part of a community that celebrates the beauty of mathematical thinking.
+                    </p>
+                </div>
+            </div>
+
+            <div class="hero-right event-embed">
+                <div class="instagram-container">
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPeJvFzkxd_/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:12px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:400px; min-width:280px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"></blockquote>
+                </div>
+            </div>
         </main>
     </section>
 
+    <script async src="//www.instagram.com/embed.js"></script>
     <script>
+        // Handle image loading with fallback
+        const landingImage = document.getElementById('landingImage');
+        const fallbackSVG = document.getElementById('fallbackSVG');
+        
+        landingImage.onerror = function() {
+            landingImage.style.display = 'none';
+            fallbackSVG.style.display = 'block';
+        };
+
         function scrollToContent() {
             document.getElementById('content').scrollIntoView({
                 behavior: 'smooth'
@@ -572,10 +527,10 @@
             const currentScroll = window.pageYOffset;
             
             if (currentScroll > 100) {
-                nav.style.padding = '0.75rem 1.5rem';
+                nav.style.padding = '1.125rem 2.25rem';
                 nav.style.top = '1rem';
             } else {
-                nav.style.padding = '1rem 2rem';
+                nav.style.padding = '1.5rem 3rem';
                 nav.style.top = '2rem';
             }
             
