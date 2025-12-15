@@ -67,7 +67,7 @@
         }
 
         .landing-subtitle {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 300;
             color: #ddd;
             text-shadow: 1px 1px 10px rgba(0,0,0,0.8);
@@ -189,12 +189,11 @@
             align-items: center;
             justify-content: center;
         }
-
-        .hero-left.event-description {
-            justify-content: flex-start;
-            padding-right: 2rem;
-            flex-direction: column;
-            align-items: flex-start;
+        
+        /* Updated: Embed is now on the left */
+        .hero-left.event-embed {
+            justify-content: center;
+            width: 100%;
         }
 
         .hero-left .logo {
@@ -218,26 +217,19 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            /* Kept width constant from previous step (approx 500px) */
             max-width: 500px; 
             margin: 0 auto;
         }
 
-        /* NEW: Wrapper to force height cropping */
         .insta-crop-wrapper {
             width: 100%;
-            /* Setting a fixed height to crop the embed. 
-               600px is an estimate of roughly 80% of a typical post height.
-               Adjust this pixel value if needed for specific posts.
-            */
             height: 734px; 
             overflow: hidden;
-            border-radius: 4px; /* Moved border radius here */
+            border-radius: 4px; 
             position: relative;
             background: transparent;
         }
 
-        /* Force the Instagram iframe to fill the wrapper width and sit at the top */
         .instagram-container blockquote,
         .instagram-container iframe { 
             width: 100% !important;
@@ -250,14 +242,13 @@
             background: transparent !important;
         }
 
-        .event-embed {
+        /* Updated: Description is now on the right */
+        .hero-right.event-description {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-        }
-
-        .hero-right {
-            padding: 0; 
+            align-items: flex-start;
+            padding-left: 2rem; /* Spacing from the left image */
         }
 
         .section-title {
@@ -338,7 +329,7 @@
             }
 
             .landing-subtitle {
-                font-size: 1.5rem;
+                font-size: 1rem;
             }
 
             .hero {
@@ -351,10 +342,16 @@
                 max-height: 300px;
             }
             
-            .hero-left.event-description {
+            /* Update Mobile Styles for the swapped layout */
+            .hero-right.event-description {
                 justify-content: center;
                 align-items: center;
-                padding-right: 0;
+                padding-left: 0;
+                order: 2; /* Ensures text is below image on mobile */
+            }
+            
+            .hero-left.event-embed {
+                order: 1;
             }
             
             .section-title {
@@ -480,7 +477,15 @@
         </div>
         
         <main class="hero" id="events">
-            <div class="hero-left event-description">
+            <div class="hero-left event-embed">
+                <div class="instagram-container">
+                    <div class="insta-crop-wrapper">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPeJvFzkxd_/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-right event-description">
                 <h2 class="section-title">P.T.S.D</h2>
                 <div class="content-text">
                     <p>
@@ -494,14 +499,6 @@
                     <p>
                         Join us every week to <span class="highlight">sharpen your problem-solving skills, discover new mathematical techniques</span>, and be part of a community that celebrates the beauty of mathematical thinking.
                     </p>
-                </div>
-            </div>
-
-            <div class="hero-right event-embed">
-                <div class="instagram-container">
-                    <div class="insta-crop-wrapper">
-                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPeJvFzkxd_/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
-                    </div>
                 </div>
             </div>
         </main>
