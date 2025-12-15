@@ -190,6 +190,14 @@
             justify-content: center;
         }
 
+        /* FIX: Specific alignment for Event Description */
+        .hero-left.event-description {
+            justify-content: flex-start; /* Aligns text to left instead of center */
+            padding-right: 2rem; /* Adds space between text and embed */
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
         .hero-left .logo {
             width: auto;
             height: auto;
@@ -226,10 +234,7 @@
             overflow: hidden;
         }
 
-        .event-description {
-            display: block;
-        }
-
+        /* Ensure event embed centers correctly */
         .event-embed {
             display: flex;
             align-items: center;
@@ -246,6 +251,7 @@
             margin-bottom: 2rem;
             opacity: 0;
             animation: fadeInUp 1s forwards 0.9s;
+            text-align: left; /* Ensure title is left aligned */
         }
 
         .content-text {
@@ -329,6 +335,17 @@
                 max-width: 300px;
                 max-height: 300px;
             }
+            
+            /* Reset alignment for mobile */
+            .hero-left.event-description {
+                justify-content: center;
+                align-items: center;
+                padding-right: 0;
+            }
+            
+            .section-title {
+                text-align: center;
+            }
 
             nav {
                 padding: 1.5rem 2.25rem;
@@ -347,12 +364,9 @@
     </style>
 </head>
 <body>
-    <!-- Landing Section -->
     <section class="landing">
-        <!-- Replace 'your-image.png' with your local image path -->
         <img src="your-image.png" alt="Mathematics" class="landing-image" id="landingImage">
         
-        <!-- Fallback SVG (will show if image fails to load) -->
         <svg class="landing-image placeholder" id="fallbackSVG" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" style="display: none;">
             <defs>
                 <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -363,7 +377,6 @@
             </defs>
             <rect width="1920" height="1080" fill="url(#grad1)"/>
             
-            <!-- Mathematical patterns -->
             <g opacity="0.3">
                 <circle cx="300" cy="200" r="150" fill="none" stroke="white" stroke-width="2"/>
                 <circle cx="300" cy="200" r="100" fill="none" stroke="white" stroke-width="2"/>
@@ -376,7 +389,6 @@
                 <rect x="1600" y="150" width="150" height="150" fill="none" stroke="white" stroke-width="2" transform="rotate(45 1675 225)"/>
             </g>
             
-            <!-- Fibonacci spiral -->
             <g opacity="0.4" transform="translate(960, 540)">
                 <path d="M 0 0 A 100 100 0 0 1 100 -100" fill="none" stroke="white" stroke-width="3"/>
                 <path d="M 100 -100 A 100 100 0 0 1 200 0" fill="none" stroke="white" stroke-width="3"/>
@@ -384,7 +396,6 @@
                 <path d="M 0 200 A 300 300 0 0 1 -300 -100" fill="none" stroke="white" stroke-width="3"/>
             </g>
             
-            <!-- Grid pattern -->
             <g opacity="0.1">
                 <line x1="0" y1="270" x2="1920" y2="270" stroke="white" stroke-width="1"/>
                 <line x1="0" y1="540" x2="1920" y2="540" stroke="white" stroke-width="1"/>
@@ -425,9 +436,7 @@
         </ul>
     </nav>
 
-    <!-- Content Section -->
     <section class="content-section" id="content">
-        <!-- About Us Section -->
         <div style="text-align: center; padding: 100px 0 50px;">
             <h1 style="font-size: 5rem; font-weight: bold; opacity: 0; animation: fadeInUp 1s forwards;">About Us</h1>
         </div>
@@ -452,7 +461,6 @@
             </div>
         </main>
 
-        <!-- Events Section -->
         <div style="text-align: center; padding: 100px 0 50px;">
             <h1 style="font-size: 5rem; font-weight: bold; opacity: 0; animation: fadeInUp 1s forwards;">Events</h1>
         </div>
@@ -477,7 +485,7 @@
 
             <div class="hero-right event-embed">
                 <div class="instagram-container">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPeJvFzkxd_/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:12px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:400px; min-width:280px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"></blockquote>
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPeJvFzkxd_/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#000; border: 1px solid #333; border-radius:12px; box-shadow: none; margin: 1px; max-width:400px; min-width:280px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"></blockquote>
                 </div>
             </div>
         </main>
@@ -485,7 +493,6 @@
 
     <script async src="//www.instagram.com/embed.js"></script>
     <script>
-        // Handle image loading with fallback
         const landingImage = document.getElementById('landingImage');
         const fallbackSVG = document.getElementById('fallbackSVG');
         
@@ -500,7 +507,6 @@
             });
         }
 
-        // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -514,7 +520,6 @@
             });
         });
 
-        // Parallax effect on scroll
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const spiral = document.querySelector('.spiral-bg');
@@ -523,7 +528,6 @@
             }
         });
 
-        // Navbar shrink on scroll
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
