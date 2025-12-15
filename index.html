@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P.R.I.M.E - Mathematics Club</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -12,7 +16,9 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
+            /* Updated Body Font to EB Garamond for that 'Academic Paper' feel */
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem; /* Slightly larger base size for Garamond readability */
             background: #000;
             color: #fff;
             overflow-x: hidden;
@@ -64,21 +70,26 @@
 
         /* Fibonacci Ratio (8) */
         .landing-title {
-            font-size: 8rem; 
-            font-weight: bold;
+            /* Updated Title Font to Cormorant Garamond for the elegant display look */
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 9rem; /* Increased slightly as Garamond runs smaller */
+            font-weight: 700;
             /* Fibonacci Ratio (3) */
-            margin-bottom: 3rem; 
+            margin-bottom: 2rem; 
             text-shadow: 2px 2px 20px rgba(0,0,0,0.8);
-            line-height: 1.1;
+            line-height: 0.9;
+            letter-spacing: -2px; /* Tighter tracking for that poster look */
         }
 
         /* Fibonacci Ratio (2) */
         .landing-subtitle {
-            font-size: 2rem; 
-            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem; 
+            font-weight: 400;
             color: #ddd;
             text-shadow: 1px 1px 10px rgba(0,0,0,0.8);
             letter-spacing: 1px;
+            font-style: italic; /* Italicized to look like math variables */
         }
 
         /* --- START OF OVERLAY CSS --- */
@@ -131,10 +142,10 @@
         }
 
         .person-name {
-            /* Dictionary Font */
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1.2rem;
-            font-weight: bold;
+            /* Using Cormorant for names */
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
             color: #000;
             margin-bottom: 0.5rem;
             border-bottom: 1px solid #eee; 
@@ -142,11 +153,11 @@
         }
 
         .person-desc {
-            /* Dictionary Body Font */
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 0.9rem;
+            /* Using EB Garamond for body text */
+            font-family: 'EB Garamond', serif;
+            font-size: 1rem;
             color: #333; 
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         /* The vertical line connecting card to person */
@@ -249,7 +260,9 @@
         .nav-links a {
             color: #fff;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-family: 'Cormorant Garamond', serif; /* Matching header font */
+            font-weight: 600;
+            font-size: 1.1rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             transition: color 0.3s;
@@ -354,26 +367,42 @@
             padding-left: 2rem; 
         }
 
+        .section-header {
+             font-family: 'Cormorant Garamond', serif;
+             font-size: 6rem; /* Large section headers */
+             font-weight: 700;
+             opacity: 0; 
+             animation: fadeInUp 1s forwards;
+             letter-spacing: -2px;
+        }
+
         .section-title {
-            font-size: 3.5rem;
-            font-weight: bold;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
             margin-bottom: 2rem;
             opacity: 0;
             animation: fadeInUp 1s forwards 0.9s;
             text-align: left;
+            letter-spacing: -1px;
+            font-style: italic;
         }
 
         .content-text {
-            font-size: 1.15rem;
-            line-height: 1.8;
+            /* EB Garamond is great for paragraphs */
+            font-family: 'EB Garamond', serif;
+            font-size: 1.35rem; /* Increased for readability */
+            line-height: 1.6;
             text-align: justify;
             opacity: 0;
             animation: fadeInUp 1s forwards 1.2s;
+            font-weight: 400;
         }
 
         .highlight {
-            font-weight: bold;
+            font-weight: 600; /* Bold looks nice in Garamond */
             color: #fff;
+            border-bottom: 1px solid rgba(255,255,255,0.3); /* Subtle underline */
         }
 
         .spiral-bg {
@@ -433,7 +462,7 @@
             }
 
             .landing-subtitle {
-                font-size: 1rem;
+                font-size: 1.5rem;
             }
 
             .hero {
@@ -460,6 +489,10 @@
             .section-title {
                 text-align: center;
             }
+            
+            .section-header {
+                font-size: 4rem;
+            }
 
             nav {
                 padding: 1rem 2rem;
@@ -472,7 +505,7 @@
             }
 
             .nav-links a {
-                font-size: 0.75rem;
+                font-size: 0.9rem;
             }
             
             .people-layer {
@@ -586,7 +619,7 @@
 
     <section class="content-section" id="content">
         <div style="text-align: center; padding: 100px 0 50px;">
-            <h1 style="font-size: 5rem; font-weight: bold; opacity: 0; animation: fadeInUp 1s forwards;">About Us</h1>
+            <h1 class="section-header">About Us</h1>
         </div>
         
         <main class="hero" id="about">
@@ -610,7 +643,7 @@
         </main>
 
         <div style="text-align: center; padding: 100px 0 50px;">
-            <h1 style="font-size: 5rem; font-weight: bold; opacity: 0; animation: fadeInUp 1s forwards;">Events</h1>
+            <h1 class="section-header">Events</h1>
         </div>
         
         <main class="hero" id="events">
