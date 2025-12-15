@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Club</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Landing Section */
+        .landing {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .landing-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .landing-image.placeholder {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        .landing-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+        }
+
+        .landing-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            animation: fadeInScale 1.5s ease-out;
+        }
+
+        .landing-title {
+            font-size: 6rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.8);
+        }
+
+        .landing-subtitle {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #ddd;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.8);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            cursor: pointer;
+           
+        }
+
+        .scroll-arrow {
+            width: 30px;
+            height: 50px;
+            border: 2px solid #ffffff;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .scroll-arrow::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            animation: scrollDot 2s infinite;
+        }
+
+        .scroll-text {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            max-width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            z-index: 1000;
+            transition: all 0.3s;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        nav:hover {
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #000;
+            transition: transform 0.3s;
+            margin-right: 2rem;
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content Section */
+        .content-section {
+            min-height: 100vh;
+            position: relative;
+            background: #000;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 8rem 4rem 4rem;
+            gap: 4rem;
+        }
+
+        .hero-left {
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 7rem;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.3s;
+        }
+
+        .hero-subtitle {
+            font-size: 4rem;
+            font-weight: 300;
+            color: #888;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.6s;
+        }
+
+        .geometric-logo {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards 0.9s;
+        }
+
+        .geometric-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .club-name {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 2rem;
+            letter-spacing: 8px;
+            text-transform: lowercase;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1.2s;
+        }
+
+        .hero-right {
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.9s;
+        }
+
+        .content-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            text-align: justify;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1.2s;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .spiral-bg {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-left {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-left .logo {
+    width: auto;
+    height: auto;
+    max-width: 500px;
+    max-height: 500px;
+    background: transparent;
+    border-radius: 0;
+    margin: 0;
+}
+
+.hero-left .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@media (max-width: 1024px) {
+    .hero-left .logo {
+        max-width: 300px;
+        max-height: 300px;
+    }
+}
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        @keyframes scrollDot {
+            0% {
+                opacity: 1;
+                top: 10px;
+            }
+            100% {
+                opacity: 0;
+                top: 30px;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .rotating {
+            animation: rotate 20s linear infinite;
+        }
+
+        @media (max-width: 1024px) {
+            .landing-title {
+                font-size: 4rem;
+            }
+
+            .landing-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 6rem 2rem 2rem;
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .hero-subtitle {
+                font-size: 2.5rem;
+            }
+
+            .geometric-logo {
+                width: 300px;
+                height: 300px;
+                margin: 0 auto;
+            }
+
+            nav {
+                padding: 1rem 1.5rem;
+                top: 1rem;
+                width: 95%;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+
+            .logo {
+                margin-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Landing Section -->
+    <section class="landing">
+        <!-- Replace 'your-image.jpg' with your local image path -->
+        <img src="your-image.png" alt="Mathematics" class="landing-image" id="landingImage">
+        
+        <!-- Fallback SVG (will show if image fails to load) -->
+        <svg class="landing-image placeholder" id="fallbackSVG" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#16213e;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#0f3460;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <rect width="1920" height="1080" fill="url(#grad1)"/>
+            
+            <!-- Mathematical patterns -->
+            <g opacity="0.3">
+                <circle cx="300" cy="200" r="150" fill="none" stroke="white" stroke-width="2"/>
+                <circle cx="300" cy="200" r="100" fill="none" stroke="white" stroke-width="2"/>
+                <circle cx="300" cy="200" r="50" fill="none" stroke="white" stroke-width="2"/>
+                
+                <path d="M 1500 800 Q 1600 700 1700 800 Q 1800 900 1900 800" fill="none" stroke="white" stroke-width="2"/>
+                <path d="M 1500 850 Q 1600 750 1700 850 Q 1800 950 1900 850" fill="none" stroke="white" stroke-width="2"/>
+                
+                <rect x="100" y="700" width="200" height="200" fill="none" stroke="white" stroke-width="2" transform="rotate(15 200 800)"/>
+                <rect x="1600" y="150" width="150" height="150" fill="none" stroke="white" stroke-width="2" transform="rotate(45 1675 225)"/>
+            </g>
+            
+            <!-- Fibonacci spiral -->
+            <g opacity="0.4" transform="translate(960, 540)">
+                <path d="M 0 0 A 100 100 0 0 1 100 -100" fill="none" stroke="white" stroke-width="3"/>
+                <path d="M 100 -100 A 100 100 0 0 1 200 0" fill="none" stroke="white" stroke-width="3"/>
+                <path d="M 200 0 A 200 200 0 0 1 0 200" fill="none" stroke="white" stroke-width="3"/>
+                <path d="M 0 200 A 300 300 0 0 1 -300 -100" fill="none" stroke="white" stroke-width="3"/>
+            </g>
+            
+            <!-- Grid pattern -->
+            <g opacity="0.1">
+                <line x1="0" y1="270" x2="1920" y2="270" stroke="white" stroke-width="1"/>
+                <line x1="0" y1="540" x2="1920" y2="540" stroke="white" stroke-width="1"/>
+                <line x1="0" y1="810" x2="1920" y2="810" stroke="white" stroke-width="1"/>
+                <line x1="480" y1="0" x2="480" y2="1080" stroke="white" stroke-width="1"/>
+                <line x1="960" y1="0" x2="960" y2="1080" stroke="white" stroke-width="1"/>
+                <line x1="1440" y1="0" x2="1440" y2="1080" stroke="white" stroke-width="1"/>
+            </g>
+        </svg>
+        
+        <div class="landing-overlay"></div>
+        
+        <div class="landing-content">
+            <h1 class="landing-title">P.R.I.M.E</h1>
+            <p class="landing-subtitle">Promoting Reasearch and Interest in Mathematics and Engineering</p>
+        </div>
+        
+        <div class="scroll-indicator" onclick="scrollToContent()">
+            <div class="scroll-arrow"></div>
+            <div class="scroll-text"></div>
+        </div>
+    </section>
+
+    <div class="spiral-bg">
+        <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 500 500 m -400 0 a 400 400 0 1 1 800 0 a 400 400 0 1 1 -800 0" fill="none" stroke="white" stroke-width="1"/>
+            <path d="M 500 500 m -350 0 a 350 350 0 1 1 700 0 a 350 350 0 1 1 -700 0" fill="none" stroke="white" stroke-width="1"/>
+            <path d="M 500 500 m -300 0 a 300 300 0 1 1 600 0 a 300 300 0 1 1 -600 0" fill="none" stroke="white" stroke-width="1"/>
+        </svg>
+    </div>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#landing">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#team">Team</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content Section -->
+    <section class="content-section" id="content">
+        <main class="hero">
+            <div class="hero-left">
+
+
+                 <div class="logo">
+        <img src="your-logo.png" alt="Logo">
+    </div>
+                
+               
+            </div>
+
+            <div class="hero-right" id="about">
+    <h2 class="section-title">About Us</h2>
+    <div class="content-text">
+        <p>
+            <span class="highlight">PRIME (Promoting Research in Mathematics and Engineering)</span> is a student-driven community for anyone curious about mathematics and its real-world impact. We provide a space to explore ideas, sharpen problem-solving skills, and connect mathematics with engineering, research, and industry.
+        </p>
+        <br>
+        <p>
+            Through <span class="highlight">interactive workshops, coding sessions, talks, competitions, and collaborative study groups</span>, PRIME makes learning mathematics practical, engaging, and hands-on. Our goal is to <span class="highlight">foster curiosity, collaboration, and innovation</span>, empowering students to grow academically and apply mathematical thinking to real-world challenges.
+        </p>
+    </div>
+</div>
+        </main>
+    </section>
+
+    <script>
+        function scrollToContent() {
+            document.getElementById('content').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const spiral = document.querySelector('.spiral-bg');
+            if (spiral) {
+                spiral.style.transform = `translateY(${scrolled * 0.3}px) rotate(${scrolled * 0.05}deg)`;
+            }
+        });
+
+        // Navbar shrink on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.padding = '0.75rem 1.5rem';
+                nav.style.top = '1rem';
+            } else {
+                nav.style.padding = '1rem 2rem';
+                nav.style.top = '2rem';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
