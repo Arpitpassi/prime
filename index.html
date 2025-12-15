@@ -111,7 +111,7 @@
             background: #ffffff; 
             border: 1px solid #ccc; 
             
-            /* Subtle 3px Curve */
+            /* CHANGED: Subtle 3px Curve */
             border-radius: 3px; 
             
             color: #000; 
@@ -189,7 +189,7 @@
             width: 30px;
             height: 50px;
             border: 2px solid #ffffff;
-            /* Back to fully curvy (Pill shape) */
+            /* CHANGED: Back to fully curvy (Pill shape) */
             border-radius: 20px;
             position: relative;
         }
@@ -203,7 +203,7 @@
             width: 6px;
             height: 6px;
             background: #fff;
-            /* Back to Circle */
+            /* CHANGED: Back to Circle */
             border-radius: 50%;
             animation: scrollDot 2s infinite;
         }
@@ -217,8 +217,8 @@
 
         nav {
             position: fixed;
-            /* CHANGED: Raised slightly (was 3rem) */
-            top: 2rem; 
+            /* Fibonacci Ratio (3) */
+            top: 3rem; 
             left: 50%;
             transform: translateX(-50%);
             width: auto;
@@ -231,7 +231,7 @@
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            /* CHANGED: More curves (was 3px) */
+            /* CHANGED: Subtle 3px Curve */
             border-radius: 7px; 
             z-index: 1000;
             transition: all 0.3s;
@@ -332,7 +332,7 @@
             width: 100%;
             height: 734px; 
             overflow: hidden;
-            /* Subtle 3px Curve */
+            /* CHANGED: Subtle 3px Curve */
             border-radius: 3px; 
             position: relative;
             background: transparent;
@@ -692,12 +692,10 @@
             
             if (currentScroll > 100) {
                 nav.style.padding = '1rem 2rem'; /* Slightly tighter on scroll */
-                /* CHANGED: Raised slightly on scroll (was 1rem) */
-                nav.style.top = '0.8rem';
+                nav.style.top = '1rem';
             } else {
                 nav.style.padding = '1rem 3rem'; /* Default Fib spacing */
-                /* CHANGED: Match new default CSS position (was 3rem) */
-                nav.style.top = '2rem';
+                nav.style.top = '3rem'; /* Default Fib spacing */
             }
             
             lastScroll = currentScroll;
