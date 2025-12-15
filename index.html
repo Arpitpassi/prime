@@ -111,8 +111,8 @@
             background: #ffffff; 
             border: 1px solid #ccc; 
             
-            /* CHANGED: Fibonacci Radius (13px) */
-            border-radius: 13px; 
+            /* Subtle 3px Curve */
+            border-radius: 3px; 
             
             color: #000; 
             opacity: 0;
@@ -157,11 +157,10 @@
             left: 50%;
             width: 1px;
             height: 50px;
-            /* CHANGED: White Gradient (so it is visible against dark photo) */
             background: linear-gradient(to top, rgba(255,255,255,0.9), rgba(255,255,255,0));
         }
 
-        /* The circle at the tip */
+        /* The dot at the tip */
         .person-card::after {
             content: '';
             position: absolute;
@@ -170,8 +169,8 @@
             transform: translateX(-50%);
             width: 6px;
             height: 6px;
-            /* CHANGED: White Dot */
             background: #fff; 
+            /* Kept round as it is a point */
             border-radius: 50%;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
@@ -190,6 +189,7 @@
             width: 30px;
             height: 50px;
             border: 2px solid #ffffff;
+            /* Back to fully curvy (Pill shape) */
             border-radius: 20px;
             position: relative;
         }
@@ -203,6 +203,7 @@
             width: 6px;
             height: 6px;
             background: #fff;
+            /* Back to Circle */
             border-radius: 50%;
             animation: scrollDot 2s infinite;
         }
@@ -216,8 +217,8 @@
 
         nav {
             position: fixed;
-            /* Fibonacci Ratio (3) */
-            top: 3rem; 
+            /* CHANGED: Raised slightly (was 3rem) */
+            top: 2rem; 
             left: 50%;
             transform: translateX(-50%);
             width: auto;
@@ -230,8 +231,8 @@
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            /* Fibonacci Ratio (55) */
-            border-radius: 55px; 
+            /* CHANGED: More curves (was 3px) */
+            border-radius: 7px; 
             z-index: 1000;
             transition: all 0.3s;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
@@ -331,7 +332,8 @@
             width: 100%;
             height: 734px; 
             overflow: hidden;
-            border-radius: 4px; 
+            /* Subtle 3px Curve */
+            border-radius: 3px; 
             position: relative;
             background: transparent;
         }
@@ -690,10 +692,12 @@
             
             if (currentScroll > 100) {
                 nav.style.padding = '1rem 2rem'; /* Slightly tighter on scroll */
-                nav.style.top = '1rem';
+                /* CHANGED: Raised slightly on scroll (was 1rem) */
+                nav.style.top = '0.8rem';
             } else {
                 nav.style.padding = '1rem 3rem'; /* Default Fib spacing */
-                nav.style.top = '3rem'; /* Default Fib spacing */
+                /* CHANGED: Match new default CSS position (was 3rem) */
+                nav.style.top = '2rem';
             }
             
             lastScroll = currentScroll;
