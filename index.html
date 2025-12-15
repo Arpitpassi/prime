@@ -57,20 +57,30 @@
             z-index: 10;
             text-align: center;
             animation: fadeInScale 1.5s ease-out;
+            max-width: 80%; /* Prevents text from stretching too wide */
         }
 
+        /* FIBONACCI UPDATE: 
+           Size is 8 (Fib #6)
+           Margin is 3 (Fib #4)
+        */
         .landing-title {
-            font-size: 6rem;
+            font-size: 8rem; 
             font-weight: bold;
-            margin-bottom: 1rem;
+            margin-bottom: 3rem; 
             text-shadow: 2px 2px 20px rgba(0,0,0,0.8);
+            line-height: 1.1;
         }
 
+        /* FIBONACCI UPDATE: 
+           Size is 2 (Fib #3)
+        */
         .landing-subtitle {
-            font-size: 1.5rem;
+            font-size: 2rem; 
             font-weight: 300;
             color: #ddd;
             text-shadow: 1px 1px 10px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
         }
 
         .scroll-indicator {
@@ -110,9 +120,14 @@
             text-transform: uppercase;
         }
 
+        /* FIBONACCI UPDATE: 
+           Top position is 3rem
+           Border Radius is 55px (Fib #10)
+           Padding is 1rem vertical, 3rem horizontal
+        */
         nav {
             position: fixed;
-            top: 2rem;
+            top: 3rem; 
             left: 50%;
             transform: translateX(-50%);
             width: auto;
@@ -120,11 +135,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 3rem;
+            padding: 1rem 3rem; 
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 75px;
+            border-radius: 55px; 
             z-index: 1000;
             transition: all 0.3s;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
@@ -190,7 +205,6 @@
             justify-content: center;
         }
         
-        /* Updated: Embed is now on the left */
         .hero-left.event-embed {
             justify-content: center;
             width: 100%;
@@ -242,13 +256,12 @@
             background: transparent !important;
         }
 
-        /* Updated: Description is now on the right */
         .hero-right.event-description {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            padding-left: 2rem; /* Spacing from the left image */
+            padding-left: 2rem;
         }
 
         .section-title {
@@ -325,10 +338,14 @@
 
         @media (max-width: 1024px) {
             .landing-title {
-                font-size: 4rem;
+                /* Reduced to 5 (Fib #5) */
+                font-size: 5rem;
+                /* Reduced to 2 (Fib #3) */
+                margin-bottom: 2rem; 
             }
 
             .landing-subtitle {
+                /* Reduced to 1 (Fib #2) */
                 font-size: 1rem;
             }
 
@@ -342,12 +359,11 @@
                 max-height: 300px;
             }
             
-            /* Update Mobile Styles for the swapped layout */
             .hero-right.event-description {
                 justify-content: center;
                 align-items: center;
                 padding-left: 0;
-                order: 2; /* Ensures text is below image on mobile */
+                order: 2;
             }
             
             .hero-left.event-embed {
@@ -359,7 +375,8 @@
             }
 
             nav {
-                padding: 1.5rem 2.25rem;
+                /* Adjusted for mobile */
+                padding: 1rem 2rem;
                 top: 1rem;
                 width: 95%;
             }
@@ -541,17 +558,20 @@
             }
         });
 
+        // Script to adjust Nav bar on scroll
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             const currentScroll = window.pageYOffset;
             
             if (currentScroll > 100) {
-                nav.style.padding = '1.125rem 2.25rem';
+                // Scrolled Down State
+                nav.style.padding = '0.8rem 2rem'; // Smaller Fibish padding
                 nav.style.top = '1rem';
             } else {
-                nav.style.padding = '1.5rem 3rem';
-                nav.style.top = '2rem';
+                // Top State (Original Fibonacci Settings)
+                nav.style.padding = '1rem 3rem'; 
+                nav.style.top = '3rem';
             }
             
             lastScroll = currentScroll;
