@@ -50,6 +50,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+            pointer-events: none;
         }
 
         .landing-content {
@@ -57,24 +58,21 @@
             z-index: 10;
             text-align: center;
             animation: fadeInScale 1.5s ease-out;
-            max-width: 80%; /* Prevents text from stretching too wide */
+            max-width: 90%;
+            pointer-events: none;
         }
 
-        /* FIBONACCI UPDATE: 
-           Size is 8 (Fib #6)
-           Margin is 3 (Fib #4)
-        */
+        /* Fibonacci Ratio (8) */
         .landing-title {
             font-size: 8rem; 
             font-weight: bold;
+            /* Fibonacci Ratio (3) */
             margin-bottom: 3rem; 
             text-shadow: 2px 2px 20px rgba(0,0,0,0.8);
             line-height: 1.1;
         }
 
-        /* FIBONACCI UPDATE: 
-           Size is 2 (Fib #3)
-        */
+        /* Fibonacci Ratio (2) */
         .landing-subtitle {
             font-size: 2rem; 
             font-weight: 300;
@@ -82,6 +80,102 @@
             text-shadow: 1px 1px 10px rgba(0,0,0,0.8);
             letter-spacing: 1px;
         }
+
+        /* --- START OF OVERLAY CSS --- */
+        .people-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 15; 
+        }
+
+        .hotspot {
+            position: absolute;
+            top: 20%;
+            height: 55%; 
+            width: 20%;
+            cursor: pointer;
+        }
+
+        .person-card {
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 260px;
+            padding: 1.25rem;
+            
+            /* Card Design: White Box */
+            background: #ffffff; 
+            border: 1px solid #ccc; 
+            
+            /* CHANGED: Fibonacci Radius (13px) */
+            border-radius: 13px; 
+            
+            color: #000; 
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Show card on hover */
+        .hotspot:hover .person-card {
+            opacity: 1;
+            visibility: visible;
+            bottom: -160px;
+        }
+
+        .person-name {
+            /* Dictionary Font */
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #eee; 
+            padding-bottom: 5px;
+        }
+
+        .person-desc {
+            /* Dictionary Body Font */
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 0.9rem;
+            color: #333; 
+            line-height: 1.4;
+        }
+
+        /* The vertical line connecting card to person */
+        .person-card::before {
+            content: '';
+            position: absolute;
+            top: -50px; 
+            left: 50%;
+            width: 1px;
+            height: 50px;
+            /* CHANGED: White Gradient (so it is visible against dark photo) */
+            background: linear-gradient(to top, rgba(255,255,255,0.9), rgba(255,255,255,0));
+        }
+
+        /* The circle at the tip */
+        .person-card::after {
+            content: '';
+            position: absolute;
+            top: -54px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            /* CHANGED: White Dot */
+            background: #fff; 
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        /* --- END OF OVERLAY CSS --- */
 
         .scroll-indicator {
             position: absolute;
@@ -120,13 +214,9 @@
             text-transform: uppercase;
         }
 
-        /* FIBONACCI UPDATE: 
-           Top position is 3rem
-           Border Radius is 55px (Fib #10)
-           Padding is 1rem vertical, 3rem horizontal
-        */
         nav {
             position: fixed;
+            /* Fibonacci Ratio (3) */
             top: 3rem; 
             left: 50%;
             transform: translateX(-50%);
@@ -135,10 +225,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            /* Fibonacci Ratios (1 and 3) */
             padding: 1rem 3rem; 
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Fibonacci Ratio (55) */
             border-radius: 55px; 
             z-index: 1000;
             transition: all 0.3s;
@@ -261,7 +353,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            padding-left: 2rem;
+            padding-left: 2rem; 
         }
 
         .section-title {
@@ -337,15 +429,14 @@
         }
 
         @media (max-width: 1024px) {
+            /* Mobile Ratio (5) */
             .landing-title {
-                /* Reduced to 5 (Fib #5) */
                 font-size: 5rem;
-                /* Reduced to 2 (Fib #3) */
-                margin-bottom: 2rem; 
+                margin-bottom: 2rem;
             }
 
+            /* Mobile Ratio (1) */
             .landing-subtitle {
-                /* Reduced to 1 (Fib #2) */
                 font-size: 1rem;
             }
 
@@ -363,7 +454,7 @@
                 justify-content: center;
                 align-items: center;
                 padding-left: 0;
-                order: 2;
+                order: 2; 
             }
             
             .hero-left.event-embed {
@@ -375,7 +466,6 @@
             }
 
             nav {
-                /* Adjusted for mobile */
                 padding: 1rem 2rem;
                 top: 1rem;
                 width: 95%;
@@ -388,12 +478,17 @@
             .nav-links a {
                 font-size: 0.75rem;
             }
+            
+            /* Hide hotspots on mobile */
+            .people-layer {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
     <section class="landing" id="landing">
-        <img src="your-image.png" alt="Mathematics" class="landing-image" id="landingImage">
+        <img src="your-image.png" alt="Mathematics Legends" class="landing-image" id="landingImage">
         
         <svg class="landing-image placeholder" id="fallbackSVG" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" style="display: none;">
             <defs>
@@ -433,6 +528,36 @@
                 <line x1="1440" y1="0" x2="1440" y2="1080" stroke="white" stroke-width="1"/>
             </g>
         </svg>
+
+        <div class="people-layer">
+            <div class="hotspot" style="left: 2%;">
+                <div class="person-card">
+                    <div class="person-name">Srinivasa Ramanujan</div>
+                    <div class="person-desc">The man who knew infinity. A self-taught genius who made extraordinary contributions to mathematical analysis and number theory.</div>
+                </div>
+            </div>
+
+            <div class="hotspot" style="left: 27%;">
+                <div class="person-card">
+                    <div class="person-name">J. Robert Oppenheimer</div>
+                    <div class="person-desc">Theoretical physicist and director of the Manhattan Project. Known for his work in quantum mechanics and black holes.</div>
+                </div>
+            </div>
+
+            <div class="hotspot" style="left: 52%;">
+                <div class="person-card">
+                    <div class="person-name">Richard Feynman</div>
+                    <div class="person-desc">Nobel Prize winner known for quantum electrodynamics and his ability to explain complex concepts with simple intuition.</div>
+                </div>
+            </div>
+
+            <div class="hotspot" style="left: 77%;">
+                <div class="person-card" style="left: 40%;"> 
+                    <div class="person-name">Young Terence Tao</div>
+                    <div class="person-desc">A modern prodigy and Fields Medalist. Known for his work in harmonic analysis, partial differential equations, and combinatorics.</div>
+                </div>
+            </div>
+        </div>
         
         <div class="landing-overlay"></div>
         
@@ -558,20 +683,17 @@
             }
         });
 
-        // Script to adjust Nav bar on scroll
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             const currentScroll = window.pageYOffset;
             
             if (currentScroll > 100) {
-                // Scrolled Down State
-                nav.style.padding = '0.8rem 2rem'; // Smaller Fibish padding
+                nav.style.padding = '1rem 2rem'; /* Slightly tighter on scroll */
                 nav.style.top = '1rem';
             } else {
-                // Top State (Original Fibonacci Settings)
-                nav.style.padding = '1rem 3rem'; 
-                nav.style.top = '3rem';
+                nav.style.padding = '1rem 3rem'; /* Default Fib spacing */
+                nav.style.top = '3rem'; /* Default Fib spacing */
             }
             
             lastScroll = currentScroll;
