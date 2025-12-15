@@ -179,7 +179,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             align-items: center;
-            padding: 8rem 4rem 4rem;
+            padding: 2rem 4rem 2rem;
             gap: 4rem;
         }
 
@@ -421,22 +421,25 @@
             <li><a href="#landing">Home</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#events">Events</a></li>
-            <li><a href="#activities">Activities</a></li>
             <li><a href="#team">Team</a></li>
         </ul>
     </nav>
 
     <!-- Content Section -->
     <section class="content-section" id="content">
-        <main class="hero">
+        <!-- About Us Section -->
+        <div style="text-align: center; padding: 100px 0 50px;">
+            <h1 style="font-size: 5rem; font-weight: bold; opacity: 0; animation: fadeInUp 1s forwards;">About Us</h1>
+        </div>
+        
+        <main class="hero" id="about">
             <div class="hero-left">
                 <div class="logo">
                     <img src="your-logo.png" alt="PRIME Logo">
                 </div>
             </div>
 
-            <div class="hero-right" id="about">
-                <h2 class="section-title">About Us</h2>
+            <div class="hero-right">
                 <div class="content-text">
                     <p>
                         <span class="highlight">PRIME (Promoting Research in Mathematics and Engineering)</span> is a student-driven community for anyone curious about mathematics and its real-world impact. We provide a space to explore ideas, sharpen problem-solving skills, and connect mathematics with engineering, research, and industry.
@@ -450,7 +453,7 @@
         </main>
 
         <!-- Events Section -->
-        <div style="text-align: center; padding: 4rem 0 2rem;">
+        <div style="text-align: center; padding: 100px 0 50px;">
             <h1 style="font-size: 5rem; font-weight: bold; opacity: 0; animation: fadeInUp 1s forwards;">Events</h1>
         </div>
         
